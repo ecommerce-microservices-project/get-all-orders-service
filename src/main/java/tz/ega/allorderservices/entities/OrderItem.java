@@ -9,6 +9,8 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Transient;
+import tz.ega.allorderservices.dto.Product;
 
 @Entity(name = "order_items")
 public class OrderItem {
@@ -28,17 +30,20 @@ public class OrderItem {
 	@JsonIgnore
 	private Order order;
 	
+	@Transient
+	private Product product;
+	
 	public OrderItem() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public OrderItem(int id, int productId, int quantity, int buyingPrice, Order order) {
+	public OrderItem(int id, int productId, int quantity, int buyingPrice , Product product) {
 		super();
 		this.id = id;
 		this.productId = productId;
 		this.quantity = quantity;
 		this.buyingPrice = buyingPrice;
-		this.order = order;
+		this.product = product;
 	}
 
 	public int getId() {
@@ -80,6 +85,13 @@ public class OrderItem {
 	public void setOrder(Order order) {
 		this.order = order;
 	}
-	
 
+	public Product getProduct() {
+		return product;
+	}
+
+	public void setProduct(Product product) {
+		this.product = product;
+	}
+	
 }

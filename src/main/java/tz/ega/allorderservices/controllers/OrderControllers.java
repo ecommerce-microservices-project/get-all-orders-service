@@ -9,19 +9,20 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import tz.ega.allorderservices.dao.OrdersDAO;
 import tz.ega.allorderservices.entities.Order;
+import tz.ega.allorderservices.services.OrderService;
 
 @RestController
 @RequestMapping("/api/orders/")
 public class OrderControllers {
 
 	@Autowired
-	OrdersDAO ordersDAO;
+	OrderService orderService;
+	
 	
 	@GetMapping("get-all-orders")
 	public ResponseEntity<List<Order>> getAllOrders(){
-		List<Order> orders = ordersDAO.findAll();
+		List<Order> orders = orderService.findAllOrders();
 		return ResponseEntity.ok(orders);
 	}
 }

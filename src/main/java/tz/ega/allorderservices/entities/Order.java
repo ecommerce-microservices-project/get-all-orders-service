@@ -33,11 +33,12 @@ public class Order {
 		// TODO Auto-generated constructor stub
 	}
     
-	public Order(int id, Status status, LocalDateTime createdAt) {
+	public Order(int id, Status status, LocalDateTime createdAt, List<OrderItem> orderItems) {
 		super();
 		this.id = id;
 		this.status = status;
 		this.createdAt = createdAt;
+		this.orderItems = orderItems;
 	}
 
 	public int getId() {

@@ -55,4 +55,12 @@ public class OrderServiceImpl implements OrderService {
                 .toList();
   }
 
+	@Override
+	public List<Order> findAllOrdersFallBack() {
+		
+		List<Order> orders = ordersDAO.findAll();
+		
+		return orders;
+	}
+
 }

@@ -4,6 +4,8 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.*;
 
 enum Status {
@@ -26,7 +28,8 @@ public class Order {
     @Column(name = "created_at")
     private LocalDateTime createdAt;
     
-    @OneToMany(mappedBy = "order", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "order", fetch = FetchType.LAZY)
+    //@JsonIgnore
     private List<OrderItem> orderItems = new ArrayList<>();
     
     public Order() {

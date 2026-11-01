@@ -8,5 +8,7 @@ public interface OrderService {
 	
    List<Order> findAllOrders();
    
-   List<Order> findAllOrdersFallBack();
+   Order findOrdersFallBack(int orderId, Throwable throwable);
+   
+   Order findOrder(int orderId);
 }
